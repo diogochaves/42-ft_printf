@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdarg.h>
 
 int ft_printf(const char *str, ...)
 {
+	va_list	args;
 	int	size;
 
 	size = 0;
+	va_start(args, str);
 	while (str[size])
 	{
+		// va_arg(args, int);
 		write(1, &str[size], 1);
 		size++;
 	}
+	va_end(args);
 	return (size);
 }
 
