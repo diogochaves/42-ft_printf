@@ -19,7 +19,7 @@ $(LIBFT):
 		cp $(LIBFT) $(NAME)
 
 %.o:	%.c
-		$(CC) $(CFLAGS) -c -o $@ $< -I ./libft
+		$(CC) $(FLAGS) -c -o $@ $< -I ./libft
 
 clean:
 		make clean -C libft
@@ -28,10 +28,11 @@ clean:
 fclean:	clean
 		make fclean -C libft
 		$(RM) $(NAME)
+		$(RM) main.o
 
 re:		fclean all
 
 test:	$(LIBFT) $(OBJS)
-		$(CC) $(CFLAGS) main.c $(OBJS) $(NAME) -I ./libft
+		$(CC) $(FLAGS) main.c $(OBJS) $(NAME) -I ./libft
 
 .PHONY: all clean fclean re bonus test
