@@ -1,10 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dchaves- <dchaves-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/07 19:15:16 by dchaves-          #+#    #+#             */
+/*   Updated: 2022/01/08 00:47:34 by dchaves-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	parse_printf(const char *str, va_list args, int *len);
-void	parse_char(char chr, int *len);
-void	parse_string(char *str, int *len);
-void	parse_hex(int num, char charcase, int *len);
-void	parse_pointer(char *ptr, int *len);
+#include "ft_printf.h"
 
 int	ft_printf(const char *str, ...)
 {
@@ -34,55 +40,14 @@ void	parse_printf(const char *str, va_list args, int *len)
 			else if (*str == 's')
 				parse_string(va_arg(args, char *), len);
 			else if (*str == 'd' || *str == 'i')
-				parse_string(ft_itoa(va_arg(args, int)), len);
+				parse_int(va_arg(args, int), len);
 			else if (*str == 'u')
-				parse_string(ft_itoa((unsigned int)(va_arg(args, int))), len);
+				parse_unsigned_int((va_arg(args, unsigned int)), len);
 			else if (*str == 'x' || *str == 'X')
-				parse_hex(va_arg(args, int), *str, len);
+				parse_hex((va_arg(args, unsigned int)), *str, len);
 			else if (*str == 'p')
-				parse_pointer(va_arg(args, char *), len);
+				parse_pointer(va_arg(args, void *), len);
 		}
 		str++;
 	}
-}
-
-void	parse_char(char chr, int *len)
-{
-	write(1, &chr, 1);
-	*len += 1;
-}
-
-void	parse_string(char *str, int *len)
-{
-	write(1, str, ft_strlen(str));
-	*len += ft_strlen(str);
-}
-
-void	parse_hex(int num, char charcase, int *len)
-{
-	char	hex[64];
-	int		size;
-
-	size = 1;
-	while (num)
-	{
-		if (charcase == 'x')
-			hex[size-1] = HEXLOW[num % 16];
-		else
-			hex[size-1] = HEXUPP[num % 16];
-		num = num / 16;
-		size++;
-	}
-	*len += size - 1;
-	while (size)
-	{
-		write(1, &hex[size-1], 1);
-		size--;
-	}
-}
-
-void	parse_pointer(char *ptr, int *len)
-{
-	write(1, ptr, ft_strlen(ptr));
-	*len += ft_strlen(ptr);
 }
