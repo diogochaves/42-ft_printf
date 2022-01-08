@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchaves- <dchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:20:03 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/01/07 23:52:52 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:49:31 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ static char	*ft_uitoa(unsigned int n)
 	return (num_str);
 }
 
-void	parse_int(int num, int *len)
+void	print_int(int num, int *len)
 {
 	char	*num_str;
 
 	num_str = ft_itoa(num);
-	parse_string(num_str, len);
+	print_string(num_str, len);
 	free(num_str);
 }
 
-void	parse_unsigned_int(unsigned int num, int *len)
+void	print_unsigned_int(unsigned int num, int *len)
 {
 	char	*num_str;
 
 	num_str = ft_uitoa(num);
-	parse_string(num_str, len);
+	print_string(num_str, len);
 	free(num_str);
 }

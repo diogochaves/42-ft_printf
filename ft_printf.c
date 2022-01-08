@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:15:16 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/01/08 00:47:34 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/01/08 12:16:21 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ void	parse_printf(const char *str, va_list args, int *len)
 	while (*str)
 	{
 		if (*str != '%')
-			parse_char(*str, len);
+			print_char(*str, len);
 		else
 		{
 			str++;
 			if (*str == '%')
-				parse_char(*str, len);
+				print_char(*str, len);
 			else if (*str == 'c')
-				parse_char(va_arg(args, int), len);
+				print_char(va_arg(args, int), len);
 			else if (*str == 's')
-				parse_string(va_arg(args, char *), len);
+				print_string(va_arg(args, char *), len);
 			else if (*str == 'd' || *str == 'i')
-				parse_int(va_arg(args, int), len);
+				print_int(va_arg(args, int), len);
 			else if (*str == 'u')
-				parse_unsigned_int((va_arg(args, unsigned int)), len);
+				print_unsigned_int((va_arg(args, unsigned int)), len);
 			else if (*str == 'x' || *str == 'X')
-				parse_hex((va_arg(args, unsigned int)), *str, len);
+				print_hex((va_arg(args, unsigned int)), *str, len);
 			else if (*str == 'p')
-				parse_pointer(va_arg(args, void *), len);
+				print_pointer(va_arg(args, long int), len);
 		}
 		str++;
 	}

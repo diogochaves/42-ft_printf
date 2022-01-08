@@ -6,9 +6,9 @@ NAME	:=	libftprintf.a
 LIBFT	:=	./libft/libft.a
 
 SRCS	:=	ft_printf.c \
-			ft_parse_strings.c \
-			ft_parse_numbers.c \
-			ft_parse_hex_pointers.c
+			ft_print_strings.c \
+			ft_print_numbers.c \
+			ft_print_hex_pointers.c
 
 OBJS	:=	$(SRCS:%.c=%.o)
 

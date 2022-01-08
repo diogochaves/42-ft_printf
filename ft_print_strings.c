@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_strings.c                                 :+:      :+:    :+:   */
+/*   ft_print_strings.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchaves- <dchaves-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 19:19:21 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/01/07 19:19:23 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/01/08 11:49:39 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parse_char(char chr, int *len)
+void	print_char(char chr, int *len)
 {
 	write(1, &chr, 1);
 	*len += 1;
 }
 
-void	parse_string(char *str, int *len)
+void	print_string(char *str, int *len)
 {
 	if (str)
 	{
