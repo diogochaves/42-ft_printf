@@ -12,8 +12,7 @@ SRCS	:=	ft_printf.c \
 
 OBJS	:=	$(SRCS:%.c=%.o)
 
-#all:	$(NAME)
-all:	test
+all:	$(NAME)
 
 lib: $(NAME)
 
@@ -34,11 +33,13 @@ clean:
 fclean:	clean
 		make fclean -C libft
 		$(RM) $(NAME)
-		$(RM) main.o
 
 re:		fclean all
 
 test:	$(LIBFT) $(OBJS)
 		$(CC) $(FLAGS) main.c $(OBJS) $(NAME) -I ./libft
 
-.PHONY: all clean fclean re bonus test
+tclean:	fclean
+		$(RM) a.out
+
+.PHONY: all clean fclean re bonus test tclean
